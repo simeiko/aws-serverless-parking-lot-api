@@ -1,0 +1,13 @@
+{
+  "name": "v1",
+  "version": "1.0.0",
+  "description": "Tickets microservice.",
+  "author": "Valentyn Simeiko",
+  "license": "ISC",
+  "scripts": {
+    "start": "sls offline -s local"
+  },
+  "devDependencies": {
+    "serverless-offline": "^4.4.0"
+  }
+}
