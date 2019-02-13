@@ -1,7 +1,7 @@
 const knex = require('knex');
-const Read = require('crud/Read');
-const Create = require('crud/Create');
-const Update = require('crud/Update');
+const Read = require('./crud/Read');
+const Create = require('./crud/Create');
+const Update = require('./crud/Update');
 
 /**
  * Database facade.
