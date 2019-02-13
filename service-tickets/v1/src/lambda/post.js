@@ -1,12 +1,19 @@
 const Database = require('../utils/Database/Database');
+const Utils = require('../utils/Utils');
 
+/**
+ * POST: Create ticket if there are available spots.
+ */
 exports.handler = async () => {
     const db = new Database();
 
-    return {
-        statusCode: 200,
-        body: JSON.stringify(
-            await db.read.getAvailableSpots()
-        )
-    };
+    if (await db.read.availableSpots() === 0) {
+        return Utils.error({ message: 'All parking lots are taken.' });
+    }
+
+    const ticketID = await db.create.ticket();
+
+    return Utils.success({
+        ticket_id: ticketID
+    });
 };
