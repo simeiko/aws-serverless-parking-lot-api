@@ -14,6 +14,7 @@ exports.handler = async event => {
     }
 
     const ticket = await db.read.ticket(id);
+    db.close();
 
     if (!ticket) {
         return Utils.error({ message: 'Ticket does not exist.' });

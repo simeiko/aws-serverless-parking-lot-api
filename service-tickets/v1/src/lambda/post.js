@@ -12,6 +12,7 @@ exports.handler = async () => {
     }
 
     const ticketID = await db.create.ticket();
+    db.close();
 
     return Utils.success({
         ticket_id: ticketID
