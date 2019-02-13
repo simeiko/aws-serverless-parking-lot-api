@@ -1,6 +1,6 @@
 const Database = require('../utils/Database/Database');
 
-exports.handler = async event => {
+exports.handler = async () => {
     const db = new Database();
 
     return {

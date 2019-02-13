@@ -6,16 +6,14 @@ const Update = require('./crud/Update');
 /**
  * Database facade.
  */
-class Database
-{
+class Database {
     /**
      * Initialize database connection.
      *
      * @public
      * @version 1.0
      */
-    constructor()
-    {
+    constructor() {
         /**
          * @private
          * @type {Knex.QueryBuilder | Knex}
@@ -55,8 +53,7 @@ class Database
      * @public
      * @version 1.0
      */
-    close()
-    {
+    close() {
         if (this.knex !== null) {
             this.knex.destroy();
         }

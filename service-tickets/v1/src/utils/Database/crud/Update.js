@@ -1,5 +1,4 @@
-class Update
-{
+class Update {
     /**
      * Initialize Read functions.
      *
@@ -7,8 +6,7 @@ class Update
      * @version 1.0
      * @param {Knex|Knex.QueryInterface|Knex.QueryBuilder} knex
      */
-    constructor(knex)
-    {
+    constructor(knex) {
         this.query = knex;
     }
 }
