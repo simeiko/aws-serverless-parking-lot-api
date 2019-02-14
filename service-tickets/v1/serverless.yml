@@ -12,6 +12,7 @@ provider:
     MYSQL_DATABASE: ${file(config/stage.${self:provider.stage}.yml):MYSQL_DATABASE}
     LOT_LIMIT: 10 # Amount of parking lots is expected to be the same across all instances.
     JWT_SECRET_KEY: ${file(config/stage.${self:provider.stage}.yml):JWT_SECRET_KEY}
+    AWS_ACCOUNT_ID: "12345678"
 
 plugins:
   - serverless-offline

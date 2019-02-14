@@ -11,6 +11,7 @@ provider:
     MYSQL_PASSWORD: ${file(config/stage.${self:provider.stage}.yml):MYSQL_PASSWORD}
     MYSQL_DATABASE: ${file(config/stage.${self:provider.stage}.yml):MYSQL_DATABASE}
     JWT_SECRET_KEY: ${file(config/stage.${self:provider.stage}.yml):JWT_SECRET_KEY}
+    AWS_ACCOUNT_ID: "12345678"
 
 plugins:
   - serverless-offline
