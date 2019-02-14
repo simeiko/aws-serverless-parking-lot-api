@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const Database = require('../utils/Database/Database');
 const Utils = require('../utils/Utils');
 const PriceCalculator = require('../utils/PriceCalculator');
@@ -25,10 +26,16 @@ exports.handler = async event => {
     }
 
     const stayDuration = Math.round(((Date.now() - Date.parse(ticket.issued_at)) / 1000 / 60));
+    const costOfStay = PriceCalculator.calculate(stayDuration);
 
     return Utils.success({
         ticket_id: id,
-        cost_of_stay: PriceCalculator.calculate(stayDuration),
-        stay_duration: stayDuration
+        cost_of_stay: costOfStay,
+        stay_duration: stayDuration,
+        pay_token: jwt.sign(
+            { ticket: { id, cost_of_stay: costOfStay } },
+            process.env.JWT_SECRET_KEY,
+            { expiresIn: '2m' }
+        )
     });
 };
