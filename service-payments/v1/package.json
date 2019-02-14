@@ -1,0 +1,21 @@
+{
+  "name": "v1",
+  "version": "1.0.0",
+  "description": "Payments microservice.",
+  "author": "Valentyn Simeiko",
+  "license": "ISC",
+  "scripts": {
+    "start": "sls offline -s local --port 3001"
+  },
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "serverless-offline": "^4.4.0"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.4.0",
+    "knex": "^0.16.3",
+    "mysql": "^2.16.0"
+  }
+}
