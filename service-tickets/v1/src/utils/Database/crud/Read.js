@@ -1,9 +1,9 @@
 class Read {
     /**
      * @typedef  {Object} Ticket
-     * @property {number}       id          Ticket ID
-     * @property {string}       issued_at   Issue date
-     * @property {string|null}  paid_at     Paid date
+     * @property {number}       [id]        Ticket ID
+     * @property {string}       [issued_at] Issue date
+     * @property {string|null}  [paid_at]   Paid date
      */
 
     /**
