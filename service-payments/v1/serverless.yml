@@ -27,4 +27,4 @@ functions:
     events:
     - http:
         method: post
-        path: /tickets/${self:custom.SERVICE_VERSION}
+        path: /payments/${self:custom.SERVICE_VERSION}
