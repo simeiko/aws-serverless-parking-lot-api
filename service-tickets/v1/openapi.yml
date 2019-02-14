@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: Service Tickets
+  description: Service Tickets is used to manipulate parking lot tickets.
+  version: 1.0.0
+servers:
+- url: http://localhost:3000
+  description: Local development server.
+paths:
+  /tickets/v1/{ticket_id}:
+    get:
+      summary: Return ticket information
+      parameters:
+      - in: path
+        required: true
+        name: ticket_id
+        description: Ticket ID
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A JSON object of ticket info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ticket_id:
+                    type: integer
+                    description: Ticket ID
+                  cost_of_stay:
+                    type: number
+                    description: Cost of stay
+                  stay_duration:
+                    type: integer
+                    description: Stay duration in minutes
+                  pay_token:
+                    type: string
+                    description: Pay token which must be used in order to make a payment
+        '400':
+          description: A JSON object with error message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Please provide Ticket ID.
