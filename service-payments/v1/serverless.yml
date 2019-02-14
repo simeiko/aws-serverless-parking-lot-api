@@ -11,13 +11,19 @@ provider:
     MYSQL_PASSWORD: ${file(config/stage.${self:provider.stage}.yml):MYSQL_PASSWORD}
     MYSQL_DATABASE: ${file(config/stage.${self:provider.stage}.yml):MYSQL_DATABASE}
     JWT_SECRET_KEY: ${file(config/stage.${self:provider.stage}.yml):JWT_SECRET_KEY}
-    AWS_ACCOUNT_ID: "12345678"
+    AWS_ACCOUNT_ID: 123456789012
+    STAGE: ${self:provider.stage}
 
 plugins:
   - serverless-offline
+  - serverless-offline-sns
 
 custom:
   SERVICE_VERSION: ${file(config/stage.${self:provider.stage}.yml):SERVICE_VERSION}
+  serverless-offline-sns:
+    port: 4001
+    debug: false
+    sns-endpoint: http://127.0.0.1:4000
 
 ### Routes.
 

@@ -1,11 +1,10 @@
 const jwt = require('jsonwebtoken');
-const AWS = require('aws-sdk');
 const { promisify } = require('util');
-const sns = new AWS.SNS();
-
-const verifyJWT = promisify(jwt.verify);
 const Utils = require('../utils/Utils');
 const Database = require('../utils/Database/Database');
+const SNS = require('../utils/SNS');
+
+const verifyJWT = promisify(jwt.verify);
 
 /**
  * POST: process pay_token and complete the payment.
@@ -41,10 +40,7 @@ exports.handler = async event => {
     db.close();
 
     // Notify other microservices about successful payment.
-    sns.publish({
-        Message: `Successful payment for ticket ID ${ticket.id}`,
-        TopicArn: `arn:aws:sns:us-east-1:${process.env.AWS_ACCOUNT_ID}:closeTicket`,
-    });
+    SNS.publish('closeTicket', `Successful payment for ticket ID ${ticket.id}`);
 
     return Utils.success({ message: 'Payment was completed successfully.' });
 };
