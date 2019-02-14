@@ -5,15 +5,19 @@ const verifyJWT = promisify(jwt.verify);
 const Utils = require('../utils/Utils');
 const Database = require('../utils/Database/Database');
 
-
+/**
+ * POST: process pay_token and complete the payment.
+ */
 exports.handler = async event => {
-    if (!event.headers.pay_token) {
-        return Utils.error({ message: 'Header `pay_token` must be present.' });
+    if (!event.headers.pay_token || !event.headers.credit_card) {
+        return Utils.error({ message: 'Headers `pay_token` and `credit_card` must be present.' });
     }
 
-    /**
-     * @type {{id: number, cost_of_stay: number}}
-     */
+    if (!/^\d{12,19}$/.test(event.headers.credit_card)) {
+        return Utils.error({ message: 'Invalid credit card.' });
+    }
+
+    /** @type {{id: number, cost_of_stay: number}} */
     let ticket;
 
     try {
