@@ -6,12 +6,17 @@
   "license": "ISC",
   "scripts": {
     "start": "sls offline -s local",
-    "sns": "sls offline-sns start -s local"
+    "sns": "sls offline-sns start -s local",
+    "test": "nyc mocha  \"test/**/*.js\"",
+    "test:watch": "mocha \"test/**/*.js\" --watch"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.3.0",
     "serverless-offline": "^4.4.0",
     "serverless-offline-sns": "^0.49.0"
   },

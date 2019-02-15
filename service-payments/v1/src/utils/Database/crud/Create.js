@@ -17,7 +17,7 @@ class Create {
      * @version 1.0
      * @param   {number} ticketId   Ticket ID
      * @param   {number} amount     Pay amount
-     * @returns {Promise<number>} Payment ID
+     * @returns {Promise<number>}   Payment ID
      */
     async payment(ticketId, amount) {
         const [paymentID] = await this.query('payments')

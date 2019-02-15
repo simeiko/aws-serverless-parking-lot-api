@@ -5,6 +5,7 @@ let sns;
 /**
  * This was required by `serverless-offline-sns` plugin.
  * Without this it will not be possible to test SNS locally.
+ * @todo Find other way to handle local development. Dirty & ugly.
  */
 if (process.env.STAGE === 'local') {
     AWS.config.update({ accessKeyId: 'aaa', secretAccessKey: 'aaa' });
