@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: Service Payments
+  description: Service Payments is used to handle all payment transactions.
+  version: 1.0.0
+servers:
+- url: http://localhost:3000
+  description: Local development server.
+paths:
+  /payments/v1/:
+    post:
+      summary: Make a payment
+      parameters:
+      - in: header
+        name: pay_token
+        description: Pay Token from service-tickets
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: credit_card
+        description: Credit card number. Digits only.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful ticket creation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Successfull payment confirmation
+                    example: Payment was completed successfully.
+        '400':
+          description: A JSON object with error message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: You must provide additional information.

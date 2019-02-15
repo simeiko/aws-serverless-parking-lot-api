@@ -7,6 +7,26 @@ servers:
 - url: http://localhost:3000
   description: Local development server.
 paths:
+  /tickets/v1/:
+    post:
+      summary: Create ticket
+      responses:
+        '200':
+          description: Successful ticket creation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ticket_id:
+                    type: integer
+                    description: Ticket ID
+        '400':
+          description: A JSON object with error message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /tickets/v1/{ticket_id}:
     get:
       summary: Return ticket information
