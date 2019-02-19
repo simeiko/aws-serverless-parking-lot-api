@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: '123456'
+      MYSQL_ROOT_PASSWORD: '123456'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - mysql:/var/lib/mysql
+      - ./service-tickets/v1/sql:/sql/migrations/tickets
+      - ./service-payments/v1/sql:/sql/migrations/payments
+
+volumes:
+  mysql:
+    driver: local
