@@ -8,6 +8,7 @@ services:
       MYSQL_USER: 'root'
       MYSQL_PASSWORD: '123456'
       MYSQL_ROOT_PASSWORD: '123456'
+      TZ: 'America/Toronto'
     ports:
       - '3306:3306'
     expose:
